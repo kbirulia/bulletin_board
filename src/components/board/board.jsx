@@ -1,40 +1,38 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Announcement from './announcement';
 
-class Board extends PureComponent {
-  renderItem = (announcement) => {
-    return (<Announcement
-      key={announcement.id}
-      announcement={announcement}
-      deleteAnnouncement={this.props.deleteAnnouncement}
+const Board = (props) => {
+    const renderItem = announcement => (<Announcement
+        key={announcement.id}
+        announcement={announcement}
+        deleteAnnouncement={props.deleteAnnouncement}
+        openEditModal={props.openEditModal}
     />);
-  }
 
-  render() {
-    const { rows } = this.props;
+    const { rows } = props;
 
     return (
-            <main className="container p-5">
-                {rows.map((row, index) => (
-                  <div className="row" key={index}>
-                    {row.map(this.renderItem)}
-                    </div>
-                ))}
-                <div className="row justify-content-center">
-                  <button className="bg-transparent border-0" onClick={this.props.openModal}>
-                    <img src="/img/plus.png" alt="Add"/>
-                  </button>
+        <main className="container p-5">
+            {rows.map((row, index) => (
+                <div className="row" key={index}>
+                    {row.map(renderItem)}
                 </div>
-            </main>
+            ))}
+            <div className="row justify-content-center">
+                <button className="bg-transparent border-0" onClick={props.openCreateModal}>
+                    <img src="/img/plus.png" alt="Add"/>
+                </button>
+            </div>
+        </main>
     );
-  }
-}
+};
 
 Board.propTypes = {
-  rows: PropTypes.arrayOf(PropTypes.array).isRequired,
-  openModal: PropTypes.func.isRequired,
-  deleteAnnouncement: PropTypes.func.isRequired,
+    rows: PropTypes.arrayOf(PropTypes.array).isRequired,
+    openCreateModal: PropTypes.func.isRequired,
+    openEditModal: PropTypes.func.isRequired,
+    deleteAnnouncement: PropTypes.func.isRequired,
 };
 
 export default Board;

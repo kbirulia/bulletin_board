@@ -25,8 +25,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "server": "node server/server.js",
-    "lint": "eslint 'src/**/*.{js,jsx}'",
-    "lint:fix": "eslint --fix '{src,server}/**/*.{js,jsx}'"
+    "lint": "eslint \"src/**/*.js\"",
+    "lint:fix": "eslint --fix \"{src, server}/**/*.js\""
   },
   "eslintConfig": {
     "extends": "react-app"

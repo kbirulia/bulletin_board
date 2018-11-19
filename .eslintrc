@@ -7,7 +7,11 @@
   "rules": {
     "class-methods-use-this": "off",
     "import/prefer-default-export": "off",
-    "import/named": "off"
+    "import/named": "off",
+    "comma-dangle": "off",
+    "indent": ["error", 4],
+    "max-len": ["error", { "code": 120 }],
+    "no-param-reassign":"off"
   },
   "env": {
     "browser": true,
